@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      article: 投稿
+      user: ユーザー
+      category: カテゴリー
+    attributes:
+      task:
+        id: ID
+        title: タイトル
+        sarting_date: 開始日
+        ending_date: 終了日
+        updated_at: 更新日
+      

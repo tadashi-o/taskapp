@@ -1,0 +1,51 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.container {
+    max-width: 1000px;
+}
+
+.index_title {
+    margin:25px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.index_title h2 {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.table th {
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+.button_icon {
+    margin-top: -4px;
+    margin-right: 4px;
+}
+
+.footer {
+    margin:25px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Required {
+    color:red;
+}
+
+.new_form {
+    margin: auto;
+    width: 700px;
+}
+
+.register_form table td {
+    margin-left: 50px;
+}

@@ -1,0 +1,59 @@
+<div class="container">
+
+<%# ↓ページタイトル、追加ボタン %>
+
+  <div class="index_title">
+    <h2>予定一覧</h2>
+      <a href="/tasks/new">
+        <button type="button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square button_icon" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+</svg> 新規予定追加</button>
+        <%# <%= link_to "新規追加", :new_task %>
+      </a>
+  </div>
+
+  <% if flash[:notice] %>
+  <div class="alert alert-primary" role="alert">
+    <strong><%= flash[:notice] %></strong> 
+</div>
+  <% end %>
+
+<%# ↓予定一覧テーブル %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">タイトル</th>
+        <th scope="col">開始日</th>
+        <th scope="col">終了日</th>
+        <th scope="col">終日</th>
+        <th scope="col">更新日時</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td class=""><%= task.id %></td>
+          <td><%= task.title %></td>
+          <td><%= task.sarting_date.strftime('%Y/%m/%d') %></td>
+          <td><%= task.ending_date.strftime('%Y/%m/%d') %></td>
+          <td><%= task.all_day ? '○' : '' %></td>
+          <td><%= task.updated_at.strftime('%Y/%m/%d/ %H:%M') %></td>
+          <th><%= link_to "詳細", task %></th>
+          <th><%= link_to "編集", [:edit, task] %></th>
+          <th><%= link_to "削除", task, method: :delete, data: { confirm: "予定を削除しますか？",cancel: 'やめる',commit: '削除する'}, title: '削除確認' %></th>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+<%# ↓予定合計、日付 %>
+  <div class="footer">
+    <p class="sum">予定合計 <strong><%= Task.count(:id) %></strong> 件</p>
+    <p class="today">本日の日付 <%= Date.current.strftime('%Y/%m/%d') %></p>
+  </div>
+
+</div>

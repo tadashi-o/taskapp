@@ -1,0 +1,58 @@
+<div class="container">
+  <section>
+
+  <div class="new_form">
+    <div class="index_title">
+      <h2>新規予定の追加</h2>
+    </div>
+
+    <%= render "shared/error", obj: @task %>
+
+    <div class="register_form">
+      <%= form_with model:@task do |f| %>
+        <table>
+          <tr>
+            <th><%= f.label :title ,"タイトル" %></th>
+            <td><%= f.text_field :title %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :sarting_date ,"開始日" %></th>
+            <td><%= f.text_field :sarting_date %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :ending_date ,"終了日" %></th>
+            <td><%= f.text_field :ending_date %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :all_day ,"終日" %></th>
+            <td><%= f.check_box :all_day %>  終日の場合はチェックを入れます</td>
+          </tr>
+          <tr>
+            <th><%= f.label :memo ,"スケジュールメモ" %></th>
+            <td><%= f.text_area :memo %></td>
+          </tr> 
+        </table>
+
+        <% if flash[:alert] %>
+          <div class="alert alert-danger" role="alert">
+          <strong><%= flash[:alert] %></strong>
+          </div>
+        <% end %>
+
+        <a href="/tasks"><button type="button" class="btn btn-outline-dark">キャンセル</button></a>
+        <input type="submit" name="commit" value="登録完了" class="btn btn-info" data-disable-with="登録完了" />
+      <% end %>
+      
+      <%#<%= link_to 'キャンセル', tasks_path %>
+
+    </div>
+
+
+
+
+    </div>
+
+
+
+  </section>
+</div>
