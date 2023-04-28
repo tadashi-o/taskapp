@@ -11,3 +11,10 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")
+require('data-confirm-modal')
+
+import "../stylesheets/application.scss"
+
+//= require data-confirm-modal
